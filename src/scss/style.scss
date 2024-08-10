@@ -1,0 +1,730 @@
+/*===================== 
+* Bootstrap Portfolio
+* V 1.0.1
+* @author Alexandra Batrak
+=====================*/
+
+@import 'var/variables.scss';
+@import 'var/mixins.scss';
+
+/*===================== 
+* GENERAL
+=====================*/
+.loader {
+  z-index: 1099;
+  overflow: hidden;
+}
+
+body {
+  color: $white;
+  background: $dark;
+  font-family: $body-font;
+
+  // Modal opening adds weird padding
+  &.modal-open,
+  &.modal-open nav {
+    overflow: hidden !important;
+    padding-right: 0 !important;
+  }
+}
+
+ul li a {
+  text-decoration: none;
+}
+
+.accent-font {
+  font-family: $display-font;
+}
+
+.text-font {
+  font-family: $text-font;
+}
+
+main .container-fluid {
+  max-width: 1920px;
+}
+
+.btn-cta:focus-visible,
+.navbar-toggler:focus-visible {
+  outline: 1px solid $white !important;
+}
+
+/*===================== 
+* NAV
+=====================*/
+nav {
+  transform: 0;
+  transition: $transition;
+  backdrop-filter: blur(5px);
+
+  &.is-up {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+}
+
+.nav-item a,
+.navbar-toggler span {
+  color: $primary;
+  letter-spacing: $letter-spacing-small;
+}
+
+.nav-link {
+  &.active,
+  &:hover,
+  &:focus,
+  &:active {
+    color: $white !important;
+  }
+}
+
+.navbar {
+  &-brand {
+    padding-left: 0.75rem; /* to align it with the .big-text-left */
+  }
+
+  #nav-contact-btn {
+    i.fa-hand-back-fist {
+      animation: knock 1s ease-in-out infinite;
+      transform-style: preserve-3d;
+      font-size: 1.15rem;
+    }
+  }
+
+  &-collapse {
+    &.show {
+      background: $black;
+    }
+  }
+
+  &-toggler {
+    color: $primary;
+    transition: $transition;
+    border: none;
+
+    &:focus {
+      box-shadow: none !important;
+    }
+    &[aria-expanded='true'] i.fa-solid {
+      font-weight: 400 !important;
+    }
+  }
+
+  .social-wrapper {
+    li {
+      i,
+      a {
+        color: $primary;
+
+        &:hover {
+          color: $pink;
+        }
+      }
+    }
+  }
+}
+
+/*=====================
+* HERO
+=====================*/
+.masthead {
+  background: $dark-to-black;
+
+  .big-text-left {
+    position: absolute;
+    transform: translate(-46.5%, 100%) rotate(-90deg);
+    bottom: 50%;
+    white-space: nowrap;
+  }
+
+  .title-wrapper {
+    @include reflect();
+  }
+
+  .hero-title {
+    max-width: 400px;
+    -webkit-text-fill-color: rgba(255, 255, 255, 0);
+    -webkit-text-stroke: 0.05rem $green1;
+    letter-spacing: $letter-spacing-big;
+    transform: skew(-5deg, -5deg);
+  }
+}
+
+.btn {
+  &-cta {
+    max-width: 400px;
+    letter-spacing: $letter-spacing-small;
+    overflow: hidden;
+
+    span,
+    .btn-border {
+      backdrop-filter: blur(5px);
+      transition: all 0.65s cubic-bezier(0.77, 0, 0.175, 1);
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+      background: rgba($primary, 0.5); /* bs override */
+
+      span {
+        color: $white;
+      }
+
+      .btn-border {
+        width: 120%;
+        left: 110%;
+      }
+    }
+  }
+
+  &-border {
+    left: 0%;
+    width: 0;
+    height: 100%;
+    background: $primary;
+    transform: skewX(-20deg);
+  }
+}
+
+/*=====================
+* SKILLS SCROLL
+=====================*/
+.skills {
+  &-container {
+    overflow: hidden;
+    border-right: 2px solid transparent;
+    animation: borderflash 1s cubic-bezier(0.22, -0.23, 0, 1.19) infinite;
+  }
+
+  &-title {
+    .const {
+      color: $lightblue;
+    }
+    .operator {
+      color: $blue;
+    }
+  }
+
+  &-list {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    list-style: none;
+
+    li {
+      @include skills-colors();
+      position: relative;
+      flex-shrink: 0;
+      list-style: none;
+      width: 125px;
+      height: 125px;
+      margin-left: 0;
+      margin-right: 20px;
+      opacity: 1;
+      transition: $transition;
+
+      &.fade-out {
+        opacity: 0;
+      }
+
+      &:hover {
+        color: $white;
+      }
+
+      i {
+        font-size: 2.5rem;
+        transition: 0.15s;
+      }
+    }
+  }
+}
+
+/*=====================
+* SECTIONS
+=====================*/
+.big-text {
+  @include gradient-text();
+  letter-spacing: $letter-spacing-big;
+  animation: gradient 10s ease infinite;
+}
+
+.section-title {
+  &.big-text {
+    @include reflect(0.25);
+  }
+}
+
+/*=====================
+* ABOUT
+=====================*/
+.about {
+  background: $grey-to-dark;
+
+  &-text-wrapper {
+    font-family: $text-font;
+    font-size: 1.25rem;
+  }
+
+  .btn-cta {
+    font-family: $body-font;
+  }
+}
+
+.code-block-wrapper {
+  margin-top: 5rem;
+}
+
+.code-block {
+  width: 75%;
+  box-shadow: $dark-shadow;
+}
+
+pre {
+  @include card-border();
+  backdrop-filter: blur(5px);
+}
+
+// .code-block code {
+//   font: 0.58rem/1 'JetBrains Mono', Consolas, Monaco, 'Andale Mono',
+//     'Ubuntu Mono', monospace !important;
+// }
+
+/*=====================
+* WORK
+=====================*/
+.work {
+  background: $dark-to-grey;
+
+  .sortingButton {
+    color: $white;
+    &:active:not(:hover),
+    &:first-child:active,
+    &.active:not(:hover) {
+      color: inherit !important;
+      background-color: initial !important;
+    }
+  }
+
+  .card {
+    min-height: 400px;
+    background: linear-gradient(141deg, $dark-grey, rgba($dark, 0.3));
+    @include card-border();
+    box-shadow: $dark-shadow;
+
+    &-text {
+      font-family: $text-font;
+      font-size: 1.15rem;
+    }
+  }
+
+  .hover-gradient {
+    border-radius: inherit;
+    inset: 0;
+    opacity: 0;
+    transition: all 0.5s;
+
+    &:before {
+      content: '';
+      position: absolute;
+      filter: blur(50px);
+      @include gradient-bg(repeating-linear-gradient, -15deg);
+      background-position: 0%;
+      background-size: 400%;
+      transition: $transition;
+      animation: gradient 10s linear infinite;
+    }
+
+    &:before {
+      width: 100%;
+      height: 100%;
+      opacity: 0.85;
+      transform: scale(0.9);
+      z-index: 0;
+    }
+  }
+
+  &:after {
+    z-index: -1;
+  }
+}
+
+/*=====================
+* COUNTER
+=====================*/
+.counter {
+  .card {
+    border: none;
+
+    &-title {
+      @include gradient-text('counter-card');
+      -webkit-text-stroke: 1px rgba($primary, 0.5);
+
+      &:after {
+        content: attr(data-purecounter-end);
+        background-image: inherit;
+        background-size: inherit;
+        background-clip: inherit;
+        -webkit-background-clip: inherit;
+        -webkit-text-fill-color: inherit;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        filter: blur(25px);
+        z-index: 0;
+      }
+    }
+  }
+}
+
+/*=====================
+* TESTIMONIALS
+=====================*/
+.testimonials {
+  background: linear-gradient(0deg, $dark-grey, $dark);
+}
+
+.swiper {
+  &-pagination-bullet {
+    opacity: 0.5;
+    background: $white;
+
+    &-active {
+      opacity: 1;
+    }
+  }
+
+  &-thumbnail {
+    width: 150px;
+    height: 150px;
+    box-shadow: $dark-shadow;
+  }
+
+  .fa-img {
+    span {
+      &::before,
+      &:after {
+        content: '\f2fe';
+        font-family: 'FontAwesome';
+        font-size: 5rem;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        bottom: -7.5%;
+        @include gradient-bg($deg: -15deg);
+        background-size: 200%;
+        background-position: left;
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: $white;
+        -webkit-text-fill-color: transparent;
+      }
+
+      &:before {
+        -webkit-text-stroke: 1px;
+      }
+
+      &:after {
+        filter: blur(15px);
+        transform: scale(1.05);
+        z-index: 0;
+      }
+    }
+  }
+}
+
+/*=====================
+* CONTACT
+=====================*/
+.contact {
+  background: $dark-to-grey;
+
+  form {
+    background: $dark-grey;
+    @include card-border();
+    box-shadow: $dark-shadow;
+
+    &:hover {
+      box-shadow: $card-shadow;
+    }
+  }
+
+  .submit {
+    font-family: $body-font;
+  }
+}
+
+.modal {
+  &-content {
+    background: $dark-grey;
+  }
+  &-header,
+  &-footer {
+    border: none;
+  }
+  &-header {
+    background: linear-gradient(15deg, $blue, $lilac, $green1);
+    box-shadow: 0 0 10px 0 rgba($black, 0.25);
+  }
+  &-footer {
+    background: linear-gradient(-15deg, $blue, $lilac, $green1);
+    box-shadow: 0 -4px 10px 0 rgba($black, 0.25);
+  }
+}
+
+form {
+  input,
+  optgroup,
+  textarea {
+    color: $white !important;
+    border: $black !important;
+    background-color: rgba($black, 0.25) !important;
+
+    &::placeholder {
+      color: rgba($white, 0.5) !important;
+    }
+  }
+}
+
+/*=====================
+* FOOTER
+=====================*/
+footer nav {
+  ul.text-uppercase {
+    letter-spacing: $letter-spacing-small;
+  }
+  li a {
+    color: $white;
+
+    &:hover {
+      color: $primary;
+    }
+  }
+}
+
+/*=====================
+* REVEAL ANIMATION
+=====================*/
+.reveal {
+  opacity: 0;
+  transition: all 0.8s;
+  filter: blur(5px);
+
+  &.inview {
+    opacity: 1;
+    filter: blur(0);
+
+    &:not(.fade) {
+      transform: translate(0);
+      transition-delay: 0.3s;
+    }
+  }
+
+  &-from-top {
+    transform: translateY(-40px);
+  }
+
+  &-from-right {
+    transform: translateX(40px);
+  }
+
+  &-from-bottom {
+    transform: translateY(40px);
+  }
+
+  &-from-left {
+    transform: translateX(-40px);
+  }
+
+  &-delay {
+    &.inview {
+      filter: blur(0);
+
+      // through $n: attr('data-item-nr') doesn't want to work
+      @for $i from 1 through 6 {
+        &:nth-child(#{$i}) {
+          transition-delay: $i * 0.1s;
+        }
+      }
+    }
+  }
+}
+
+/*=====================
+* KEYFRAMES
+=====================*/
+@keyframes gradient {
+  0% {
+    background-position: center;
+  }
+  25% {
+    background-position: left;
+  }
+  50% {
+    background-position: 90%;
+  }
+  100% {
+    background-position: center;
+  }
+}
+
+@keyframes knock {
+  0% {
+    transform: rotateX(17deg) scale(1, 0.95);
+  }
+  30% {
+    transform: rotate(0), scale(0.9999);
+  }
+  50% {
+    transform: rotateX(-15deg);
+  }
+  75% {
+    transform: rotateX(17deg) scale(1, 0.95);
+  }
+  100% {
+    transform: rotate(0), scale(0.9999);
+  }
+}
+
+@keyframes borderflash {
+  from {
+    border-color: $primary;
+  }
+  to {
+    border-color: transparent;
+  }
+}
+
+/*=====================
+* MEDIA
+=====================*/
+@media screen and (max-width: 768px) {
+  .masthead {
+    .code-block {
+      width: 100%;
+    }
+  }
+
+  .reveal {
+    /* Switch transform axis to avoid extending width of the body before scrolling in */
+    &-from-right {
+      transform: translateY(40px);
+    }
+
+    &-from-left {
+      transform: translateY(-40px);
+    }
+  }
+}
+
+@media screen and (max-width: 991.999px) {
+  .masthead {
+    padding-top: 100px; /* offset for fixed nav height */
+
+    .big-text {
+      position: fixed;
+      left: -1rem;
+      opacity: 0.25;
+      pointer-events: none;
+      z-index: 0;
+    }
+  }
+
+  #pauseBtn {
+    position: absolute;
+    top: 25px;
+    left: 50px;
+  }
+
+  .navbar-collapse {
+    .nav-item,
+    button {
+      width: fit-content;
+    }
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .code-block-wrapper {
+    margin-top: -10rem;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .navbar-expand-lg {
+    .social-wrapper {
+      transform: translateY(50vh) rotate(90deg);
+      right: -2rem;
+      position: fixed;
+      z-index: 1030;
+      transition: $transition;
+
+      li i {
+        transform: rotate(-90deg); /* reset rotation from the navbar */
+      }
+    }
+  }
+}
+
+@media (any-hover: hover) {
+  /* Work cards gradient to be shown on hover */
+  .work {
+    .card {
+      &:hover {
+        box-shadow: $card-shadow;
+        .card {
+          &-title,
+          &-subtitle {
+            color: $black !important;
+          }
+        }
+
+        .hover-gradient {
+          opacity: 1;
+          transition-duration: 0.5s;
+          transition-delay: 0s;
+
+          &:before {
+            transform: scale(1);
+          }
+        }
+      }
+      &-links-wrapper a.btn:hover {
+        box-shadow: 3px 4px 30px rgba($black, 0.45);
+      }
+    }
+  }
+}
+
+@media (any-hover: none) {
+  /* Work cards gradient */
+  .work {
+    .card {
+      .hover-gradient {
+        overflow: hidden;
+        opacity: 0.5;
+      }
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *:before,
+  *:after {
+    animation: none !important;
+    transition-duration: 0.1s !important;
+  }
+
+  .skills-list {
+    flex-wrap: wrap; /* when horizontal animation is off show all elements */
+  }
+
+  .reveal {
+    visibility: visible;
+    opacity: 1 !important;
+    filter: none !important;
+    transform: translate(0) scale(1) !important;
+  }
+}

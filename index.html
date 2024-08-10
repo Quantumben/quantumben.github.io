@@ -1,11 +1,405 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-gb">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Benedict Goodluck ~ Software Engineer</title>
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.bunny.net" />
+  <link href="https://fonts.bunny.net/css?family=didact-gothic:400|jetbrains-mono:400" rel="stylesheet" />
+  <link href="./dist/fonts/stylesheet.css" rel="stylesheet" />
+  <!-- Compiled Bootstrap v5.3.0 -->
+  <link href="./dist/css/bootstrap-custom.css" rel="stylesheet" />
+  <!-- Prism.js <pre> styling -->
+  <link href="./dist/vendor/prism/prism.css" rel="stylesheet" />
+  <!-- Swiper -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+  <!-- Main CSS -->
+  <link href="./dist/css/style.css" rel="stylesheet" />
+  <!-- Font Awesome package-->
+  <script src="https://kit.fontawesome.com/f549d17040.js" crossorigin="anonymous"></script>
+  <noscript>
+    <style>
+      .loader {
+        display: none !important;
+        visibility: none;
+      }
+
+      .reveal {
+        visibility: visible;
+        opacity: 1 !important;
+        filter: blur(0) !important;
+        transform: none !important;
+      }
+
+      .skills-list {
+        flex-wrap: wrap;
+        opacity: 1 !important;
+      }
+
+      .skills-list li {
+        position: relative;
+      }
+
+      .skills-list span.visually-hidden,
+      .skills-list span.visually-hidden-focusable:not(:focus):not(:focus-within) {
+        display: flex;
+        align-items: center;
+        top: 0;
+        width: 100% !important;
+        height: 100% !important;
+        padding: 0 !important;
+        margin: auto !important;
+        overflow: auto !important;
+        clip: initial !important;
+        white-space: initial !important;
+      }
+    </style>
+  </noscript>
 </head>
+
 <body>
+  <div class="loader vw-100 vh-100 position-fixed bg-dark" id="loader">
+    <div class="d-flex justify-content-center align-content-center align-items-center vw-100 vh-100">
+      <i class="fa-solid fa-code fa-beat-fade" aria-hidden="true">
+        <span class="visually-hidden">Loading...</span>
+      </i>
+    </div>
+  </div>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-black fixed-top">
+      <div class="container-fluid">
+        <a class="navbar-brand reveal reveal-from-left" href="#">
+          <h1 class="h-100 mb-0">
+            <span class="visually-hidden">Benedict Goodluck</span>
+          </h1>
+        </a>
+        <button class="navbar-toggler reveal reveal-from-top" type="button" data-bs-toggle="collapse"
+          data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="text-uppercase">Menu</span>
+          <i class="fa-solid fa-circle"></i>
+        </button>
+        <div class="collapse navbar-collapse p-5 p-lg-0" id="navbarText">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0 text-uppercase">
+            <li class="nav-item reveal reveal-from-top">
+              <a class="nav-link" href="#about">About</a>
+            </li>
+        
+            <button type="button" id="nav-contact-btn"
+              class="btn btn-outline-primary mx-lg-4 my-5 my-lg-auto position-relative text-uppercase reveal reveal-from-top"
+              data-bs-toggle="modal" data-bs-target="#contactModal">
+              <i class="fa-regular fa-hand-back-fist" aria-hidden="true"></i>
+              <span class="visually-hidden">Contact button</span>
+              <span area-hidden="true">Reach Out</span>
+            </button>
+          </ul>
+          <div class="social-wrapper d-flex justify-content-start align-items-center">
+            <ul class="list-unstyled d-flex flex-row h4">
+              <li class="nav-item px-2 reveal reveal-from-top reveal-delay">
+                <a href="mailto:omosabenedict@gmail.com">
+                  <i class="fa-solid fa-at" aria-hidden="true" title="Email"></i>
+                  <span class="visually-hidden">
+                    Send email to omosabenedict@gmail.com
+                  </span>
+                </a>
+              </li>
+              <li class="nav-item px-2 reveal reveal-from-top reveal-delay">
+                <a href="https://github.com/QuantumBen" target="_blank">
+                  <i class="fa-brands fa-github" aria-hidden="true" title="Github"></i>
+                  <span class="visually-hidden">Github</span>
+                </a>
+              </li>
+              <li class="nav-item px-2 reveal reveal-from-top reveal-delay">
+                <a href="https://codepen.io/H4CK3RB3N" target="_blank">
+                  <i class="fa-brands fa-codepen" aria-hidden="true" title="CodePen"></i>
+                  <span class="visually-hidden">CodePen</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <i class="fa-solid fa-pause px-4 reveal reveal-from-top" id="pauseBtn">
+          <span class="visually-hidden">Pause</span>
+        </i>
+      </div>
+    </nav>
+  </header>
+  <main data-bs-spy="scroll" data-bs-target="#navbarText" tabindex="0">
+    <!-- Hero section -->
+    <section class="masthead position-relative" id="hero">
+      <video autoplay muted loop id="videoBg" class="position-fixed end-0 bottom-0 min-vw-100 min-vh-100 z-n1">
+        <source src="./dist/images/video-bg.mp4" type="video/mp4" />
+      </video>
+      <div class="big-text big-text-left text-uppercase mx-3 my-3 my-lg-0 h4">
+        Software Engineer
+      </div>
+      <div class="container min-vh-100 my-auto">
+        <div class="row min-vh-100 mx-auto">
+          <div
+            class="col-xl-5 col-lg-6 col-sm-12 d-flex justify-content-lg-end align-items-lg-end ps-lg-3 my-5 my-lg-auto">
+            <div class="title-wrapper ms-4 ms-lg-0 pb-2 reveal reveal-from-left">
+              <h2 class="hero-title accent-font display-5 text-uppercase text-wrap">
+                Look, I can code
+              </h2>
+              <a href="#contactModal"  data-bs-toggle="modal" data-bs-target="#contactModal"
+                class="btn btn-cta btn-outline bar-anchor text-primary bg-primary bg-opacity-50 mt-5 py-4 px-2 position-relative text-uppercase z-1"
+                role="button">
+                <span class="w-100 position-relative bg-black py-3 px-4 z-1">
+                  Work with me
+                </span>
+                <div class="btn-border position-absolute top-0"></div>
+              </a>
+            </div>
+          </div>
+          <div class="col-xl-7 col-lg-6 col-sm-12 justify-content-lg-end align-items-lg-end py-5 my-5 my-lg-auto">
+            <div class="skills-title mx-auto mt-3 d-flex justify-content-end reveal reveal-from-top">
+              <h3>
+                <span class="const">const</span> skills
+                <span class="operator">=</span> [
+              </h3>
+            </div>
+            <div class="skills-container mx-auto my-5 reveal reveal-fade" id="skillsContainer">
+              <ul class="skills-list" id="skillsList">
+                <li class="rounded-circle">
+                  <i class="fa-brands fa-html5 d-flex justify-content-center align-items-center h-100"
+                    aria-hidden="true" title="HTML5"></i>
+                  <span class="visually-hidden">HTML5</span>
+                </li>
+                <li class="rounded-circle">
+                  <i class="fa-brands fa-css3 d-flex justify-content-center align-items-center h-100"
+                    aria-hidden="true" title="TailwindCSS"></i>
+                  <span class="visually-hidden">TailwindCSS</span>
+                </li>
+                <li class="rounded-circle">
+                  <i class="fa-brands fa-css3-alt d-flex justify-content-center align-items-center h-100"
+                    aria-hidden="true" title="CSS3"></i>
+                  <span class="visually-hidden">CSS3</span>
+                </li>
+                <li class="rounded-circle">
+                  <i class="fa-brands fa-sass d-flex justify-content-center align-items-center h-100" aria-hidden="true"
+                    title="SCSS"></i>
+                  <span class="visually-hidden">SCSS</span>
+                </li>
+                <li class="rounded-circle">
+                  <i class="fa-brands fa-bootstrap d-flex justify-content-center align-items-center h-100"
+                    aria-hidden="true" title="BootStrap"></i>
+                  <span class="visually-hidden">BootStrap</span>
+                </li>
+                <li class="rounded-circle">
+                  <i class="fa-brands fa-js d-flex justify-content-center align-items-center h-100" aria-hidden="true"
+                    title="Javascript & JQuery"></i>
+                  <span class="visually-hidden">Javascript & JQuery</span>
+                </li>
+                <li class="rounded-circle">
+                  <i class="fa-brands fa-gulp d-flex justify-content-center align-items-center h-100" aria-hidden="true"
+                    title="Gulp"></i>
+                  <span class="visually-hidden">Gulp</span>
+                </li>
+                <li class="rounded-circle">
+                  <i class="fa-brands fa-wordpress-simple d-flex justify-content-center align-items-center h-100"
+                    aria-hidden="true" title="WordPress"></i>
+                  <span class="visually-hidden">WordPress</span>
+                </li>
+                <li class="rounded-circle">
+                  <i class="fa-brands fa-php d-flex justify-content-center align-items-center h-100" aria-hidden="true"
+                    title="PHP"></i>
+                  <span class="visually-hidden">PHP</span>
+                </li>
+                <li class="rounded-circle">
+                  <i class="fa-brands fa-laravel d-flex justify-content-center align-items-center h-100" aria-hidden="true"
+                    title="PHP"></i>
+                  <span class="visually-hidden">Laravel</span>
+                </li>
+                <li class="rounded-circle">
+                  <i class="fa-brands fa-node d-flex justify-content-center align-items-center h-100" aria-hidden="true"
+                    title="Node.js"></i>
+                  <span class="visually-hidden">Node</span>
+                </li>
+                <li class="rounded-circle">
+                  <i class="fa-brands fa-npm d-flex justify-content-center align-items-center h-100" aria-hidden="true"
+                    title="npm"></i>
+                  <span class="visually-hidden">npm</span>
+                </li>
+                <li class="rounded-circle">
+                  <i class="fa-brands fa-git d-flex justify-content-center align-items-center h-100" aria-hidden="true"
+                    title="Git"></i>
+                  <span class="visually-hidden">Git</span>
+                </li>
+                <li class="rounded-circle">
+                  <i class="fa-brands fa-vuejs d-flex justify-content-center align-items-center h-100"
+                    aria-hidden="true" title="Vue Js"></i>
+                  <span class="visually-hidden">Vue JS</span>
+                </li>
+                <li class="rounded-circle">
+                  <i class="fa-brands fa-shopify d-flex justify-content-center align-items-center h-100"
+                    aria-hidden="true" title="Shopify"></i>
+                  <span class="visually-hidden">Shopify</span>
+                </li>
+              </ul>
+            </div>
+            <div class="skills-title-end mx-auto mt-3 d-flex justify-content-end reveal reveal-from-bottom">
+              <h3>];</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- end of .masthead -->
+
+    <div class="primary-content bg-dark position-relative z-1">
     
+      <!-- About section -->
+    
+      <section id="about" class="about py-md-5 bg-dark">
+        <div class="container">
+
+          <div class="row flex-row-reverse">
+
+            <div class="col-xl-7 col-lg-6 col-sm-12 code-block-wrapper reveal reveal-from-left">
+              <div class="code-block">
+                <pre class="rounded-1 bg-dark position-relative" style="--bs-bg-opacity: 0.25">
+                  <code id="typedText" class="language-js">
+const coffeeMachine = require('coffee-machine');
+const tired = sleepyEyes(e);
+const hours = (new Date()).getHours();
+
+self.Energy = class Energy {
+  constructor(energy) {
+    this.energy = energy;
+  }
+}
+
+export class Coffee extends Energy {
+  constructor(energy, caffeine) {
+    super(energy);
+    this.caffeine = caffeine;
+  }
+}
+
+class Code {
+  constructor(lines) {
+    this.lines = lines;
+  }
+  present() {
+    return this.lines;
+  }
+}
+
+if (tired &amp;&amp; hours &gt;= 09 &amp;&amp; hours &lt;= 22) {
+  try {
+    const coffee = coffeeMachine.get('coffee');
+    const code = new Code(345);
+  } catch (err) {
+    throw 'You cannot even get the coffee right, damn!';
+  }
+} else {
+  tired.sleep('bed');
+}
+                  </code>
+                </pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- end of About section-->
+    
+      <!-- end of Testimonials section-->
+
+    </div>
+    <!-- end of .primary-content -->
+  </main>
+  <footer class="footer bg-dark py-5 pb-3">
+    <div class="container reveal reveal-from-bottom">
+      <div class="row">
+        <div class="d-lg-flex col-lg-5 col-md-5 col-sm-12 flex-lg-column-reverse justify-content-lg-end mb-4 mb-lg-0">
+        </div>
+        <div class="col-12 gy-5 d-flex justify-content-center text-font reveal reveal-from-bottom">
+          <p>
+            All rights reserved © 2024
+            <i class="fa-regular fa-heart" aria-hidden="true"></i>
+            Benedict Goodluck Omosa
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- Contact form modal -->
+  <div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content rounded-3">
+        <div class="modal-header">
+          <h2 class="modal-title fs-5 reveal reveal-from-bottom" id="contactLabel">
+            Get in touch
+          </h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form class="row g-3 p-3 pb-5 needs-validation text-font" novalidate>
+            <div class="col-md-6 col-sm-12 reveal reveal-from-bottom">
+              <label for="validationFirstName" class="form-label">First name</label>
+              <input type="text" class="form-control" id="validationFirstName" placeholder="Benedict" required />
+              <div class="valid-feedback">Looks good!</div>
+            </div>
+            <div class="col-md-6 col-sm-12 reveal reveal-from-bottom">
+              <label for="validationLastName" class="form-label">Last name</label>
+              <input type="text" class="form-control" id="validationLastName" placeholder="Goodluck" required />
+              <div class="valid-feedback">Looks good!</div>
+            </div>
+            <div class="col-12 reveal reveal-from-bottom">
+              <label for="validationEmail" class="form-label">Email address</label>
+              <input type="email" class="form-control" id="validationEmail" placeholder="omosabenedict[at]gmail.com" required />
+              <div class="invalid-feedback">
+                Please type a valid email address.
+              </div>
+            </div>
+            <div class="col-12 reveal reveal-from-bottom">
+              <div class="mb-3">
+                <label for="Message" class="form-label">Message</label>
+                <textarea class="form-control" id="Message" rows="3" required></textarea>
+                <div class="invalid-feedback">Cannot be empty.</div>
+              </div>
+            </div>
+            <div class="col-12 mb-3 reveal reveal-from-bottom">
+              <label for="formFileMultiple" class="form-label">Add files of inspiration</label>
+              <input class="form-control" type="file" id="formFileMultiple" multiple />
+            </div>
+            <div class="col-12 reveal reveal-from-bottom">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required />
+                <label class="form-check-label" for="invalidCheck">
+                  Agree to
+                  <a href="#" target="_blank">terms &amp; conditions</a>
+                </label>
+                <div class="invalid-feedback">
+                  You must agree before submitting.
+                </div>
+              </div>
+            </div>
+            <div class="col-12 reveal reveal-from-bottom">
+              <button class="btn btn-primary text-uppercase submit" type="submit">
+                Submit
+              </button>
+              <button type="button" class="btn btn-secondary reveal reveal-from-right" data-bs-dismiss="modal">
+                Close
+              </button>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer"></div>
+      </div>
+    </div>
+  </div>
+  <!-- end of Contact form modal -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+    crossorigin="anonymous"></script>
+  <script src="./dist/vendor/prism/prism.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+  <script src="./dist/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="./dist/index.js"></script>
 </body>
+
 </html>

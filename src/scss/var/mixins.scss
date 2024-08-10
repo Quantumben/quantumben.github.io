@@ -1,0 +1,76 @@
+@import 'variables.scss';
+
+@mixin gradient-bg($gradient: linear-gradient, $deg: 0deg) {
+  $gradient: $gradient + '('+ (
+      $deg,
+      $lilac,
+      $l-blue,
+      $blue,
+      $lightblue,
+      $green1,
+      $green2,
+      $blue,
+      $l-blue,
+      $lilac,
+      $pink2,
+      $pink,
+      $coral
+    ) + ')';
+  background-image: $gradient;
+}
+
+@mixin reflect($opacity: 0.15) {
+  $gradient: linear-gradient + '('+ (transparent, rgba($black, $opacity)) +')';
+  -webkit-box-reflect: below 1px $gradient;
+}
+
+@mixin card-border() {
+  border: 2px solid;
+  border-top-color: rgba($lilac, 0.15);
+  border-left-color: rgba($blue, 0.15);
+  border-bottom-color: rgba($blue, 0.05);
+  border-right-color: transparent;
+}
+
+@mixin gradient-text($el: 'hero') {
+  $degree: 90deg;
+  $background-size: 200% auto;
+
+  @if ($el == 'counter-card') {
+    $degree: 50deg;
+    $background-size: 150%;
+  }
+
+  @include gradient-bg($deg: $degree);
+  background-size: $background-size;
+  background-position: bottom;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: $white;
+  -webkit-text-fill-color: rgba($white, 0);
+  animation: gradient 10s ease infinite;
+}
+
+// assign random variable to list item
+@mixin skills-colors() {
+  $colors: $lilac, $l-blue, $blue, $lightblue, $green1, $green2, $blue, $l-blue,
+    $lilac, $pink2, $pink, $coral;
+
+  // assign values as list order
+  $i: 1;
+
+  @each $color in $colors {
+    &:nth-of-type(#{$i}) {
+      color: $color;
+    }
+    $i: $i + 1;
+  }
+
+  // assign value randomly
+  // throws error why?
+  // @for $i from 1 through 10 {
+  //   &:nth-of-type(#{$i}) {
+  //     color: random($colors);
+  //   }
+  // }
+}

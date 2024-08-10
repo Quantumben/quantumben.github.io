@@ -1,0 +1,38 @@
+{
+  "name": "Goodluck Benedict Omosa",
+  "version": "1.0.0",
+  "description": "portfolio",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Quantumben/quantumben.github.io"
+  },
+  "keywords": [
+    "portfolio",
+    "bootstrap",
+    "bootcamp"
+  ],
+  "author": "Goodluck Benedict Omosa",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Quantumben/quantumben.github.io/issues"
+  },
+  "homepage": "https://github.com/Quantumben/quantumben.github.io#readme",
+  "devDependencies": {
+    "autoprefixer": "^10.4.13",
+    "bootstrap": "^5.3.0-alpha1",
+    "install": "^0.13.0",
+    "npm": "^9.2.0",
+    "postcss": "^8.4.20",
+    "postcss-advanced-variables": "^3.0.1",
+    "postcss-cli": "^10.1.0",
+    "postcss-nested": "^6.0.0",
+    "postcss-scss": "^4.0.6"
+  },
+  "scripts": {
+    "preinstall": "npx npm-force-resolutions"
+  },
+  "browserslist": [
+    "> 2%"
+  ]
+}
